@@ -5,29 +5,31 @@ class First {
     private:
         int num;
     public:
-        const First operator+() const;
+        First(int num);
+        const First operator+(First & first) const;
         void print() const;
-        int result(int num1, int num2) const;
-    
-};
-
-class Second {
-    private:
-        int num;
-    
 };
 
 // Start implementation for classes
-int First::result(int num1, int num2) const {
-    return (num1+num2);
+First::First(int num) : num(num) {
+
+}
+const First First::operator+(First &first) const {
+    return First(num+first.num);
+}
+void First::print() const {
+    cout << "First num = " << num << endl;
 }
 
-const First First::operator+() const {
-    
-}
 
 int main() {
 
+    First first(20);
+    First second(20);
+
+    First third = first + second;
+
+    third.print();
 
     return 0;
 }
